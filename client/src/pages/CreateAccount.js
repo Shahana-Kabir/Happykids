@@ -1,19 +1,37 @@
 import { Component, useState } from 'react';
-import { Container, Form, Button, Row, Col } from 'react-bootstrap';
+import { Alert, Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const CreateAccount = () => {
-    
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [bio, setBio] = useState('');
     const [posted, setPosted] = useState(false);
+    const [validated, setValidated] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
 
-    const submit = async (e)=>{
+
+    const submit = async (e) => {
         e.preventDefault();
+
+        const form = e.currentTarget;
+        if(!form.checkValidity()){            
+            setValidated(true);
+            return;
+        }
+
+        if(password !== confirmPassword){
+            setPasswordError(true);
+            return;
+        }
+        else {
+            setPasswordError(false);
+        }
+        
         const profile = {
             name, email, password, confirmPassword, bio
         }
@@ -24,15 +42,16 @@ const CreateAccount = () => {
         setPosted(true);
     }
 
-    if(posted){
+    if (posted) {
         return (
-            <Redirect to = "/CurrentJobs" />
+            <Redirect to="/LogIn" />
         )
     }
 
     return (<>
 
-        <Form>
+        <Form noValidate validated={validated} onSubmit={submit}>
+            <h1>Create Account</h1>
 
             <Container>
 
@@ -42,13 +61,19 @@ const CreateAccount = () => {
 
                         <Form.Group>
                             <Form.Label>Name</Form.Label>
-                            <Form.Control placeholder="Name" onChange={(e) => setName(e.target.value)} />
+                            <Form.Control required placeholder="Name" onChange={(e) => setName(e.target.value)} />
+                            <Form.Control.Feedback type="invalid">
+                                Name is required.
+                            </Form.Control.Feedback>
 
                         </Form.Group>
 
                         <Form.Group>
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+                            <Form.Control type="email" required placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+                            <Form.Control.Feedback type="invalid">
+                                Valid Email is required.
+                            </Form.Control.Feedback>
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                     </Form.Text>
@@ -56,12 +81,21 @@ const CreateAccount = () => {
 
                         <Form.Group>
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password"  onChange={(e) =>setPassword(e.target.value)}/>
+                            <Form.Control type="password" required placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                            <Form.Control.Feedback type="invalid">
+                                Password is required.
+                            </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group>
                             <Form.Label>Confirm Password</Form.Label>
-                            <Form.Control type="password" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)}/>
+                            <Form.Control type="password" required placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} />
+                            <Form.Control.Feedback type="invalid">
+                               Confirm password is required.
+                            </Form.Control.Feedback>
+                            { passwordError ? 
+                            <Form.Text className="text-danger">Password and Confirm Password must match</Form.Text>
+                            : ''}
                         </Form.Group>
 
 
@@ -69,12 +103,15 @@ const CreateAccount = () => {
 
                     <Col>
                         <Form.Group>
-                            <Form.File id="exampleFormControlFile1" label="Profile Image" />
+                            <Form.File label="Profile Image" />
                         </Form.Group>
 
                         <Form.Group>
                             <Form.Label>Bio</Form.Label>
-                            <Form.Control as="textarea" rows={6} onChange={(e) => setBio(e.target.value)}/>
+                            <Form.Control as="textarea" required rows={6} onChange={(e) => setBio(e.target.value)} />
+                            <Form.Control.Feedback type="invalid">
+                                Bio is required.
+                            </Form.Control.Feedback>
                         </Form.Group>
                     </Col>
                 </Row>
@@ -83,7 +120,7 @@ const CreateAccount = () => {
                 <Row>
 
                     <Col className="d-flex justify-content-center">
-                        <Button variant="primary" type="submit" onClick = {submit}>
+                        <Button variant="primary" type="submit">
                             Submit
                            </Button>
                     </Col>

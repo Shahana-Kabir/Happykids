@@ -52,7 +52,7 @@ router.post('/login', (req, res) => {
         res.json({token: newToken});
     }
     else{
-        res.status(404)
+        res.status(404).json()
     }
 
 });
