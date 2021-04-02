@@ -1,5 +1,6 @@
 import { Component, useState } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const CreateAccount = () => {
@@ -9,6 +10,7 @@ const CreateAccount = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [bio, setBio] = useState('');
+    const [posted, setPosted] = useState(false);
 
     const submit = async (e)=>{
         e.preventDefault();
@@ -19,6 +21,13 @@ const CreateAccount = () => {
 
         console.log('From server');
         console.log(response.data);
+        setPosted(true);
+    }
+
+    if(posted){
+        return (
+            <Redirect to = "/CurrentJobs" />
+        )
     }
 
     return (<>

@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const app = express();
 const fs = require('fs');
 const crypto = require('crypto');
+const {createToken, deleteToken, getProfileId} = require('../tokens');
+
 // const emailValidator = require('email-validator');
 
 function readProfiles() {
@@ -28,11 +31,7 @@ router.post('/', (req, res) => {
         }
     
     
-    // const errors = validateWarehouse(newWarehouse);
-    // if (errors.length > 0) {
-    //     res.status(400).json(errors);
-    //     return;
-    // }
+    
 
     const profiles = readProfiles();
     profiles.push(profile);
@@ -40,5 +39,33 @@ router.post('/', (req, res) => {
     writeProfiles(profiles);
     res.json(profile);
 });
+
+
+router.post('/login', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    const profiles = readProfiles();
+    const profile = profiles.find(profile => profile.email === email && profile.password === password)
+
+    if(profile){
+        const newToken = createToken(profile.id);
+        res.json({token: newToken});
+    }
+    else{
+        res.status(404)
+    }
+
+});
+
+router.post('/logout', (req, res) => {
+    const token = req.body.token;
+    deleteToken(token);
+    res.json({deleted: true});
+});
+
+// app.get ('/profiles', function(req, res){
+//     res.send(profiles)
+
+// })
 
 module.exports = router;

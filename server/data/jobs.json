@@ -1,0 +1,61 @@
+[
+  {
+    "id": "0ee19bf934b7ce9c863b264351cbbf613c780c7d",
+    "street": "82 Arbour Stone rise, NW",
+    "city": "Calgary",
+    "province": "Alberta",
+    "postalCode": "T3G4N3"
+  },
+  {
+    "id": "8823b5592d7f9cd993203d976b4862d2ae49284c",
+    "street": "75 arbour",
+    "city": "Calgary",
+    "province": "Alberta",
+    "postalCode": "T3G4N3"
+  },
+  {
+    "id": "1e0c74d79444f6eee2546b54646c6377ff0f99ff",
+    "street": "75 arbour",
+    "city": "Calgary",
+    "province": "Alberta",
+    "postalCode": "T3G4N3"
+  },
+  {
+    "id": "68d921974408957f9cef080470f50386d2e6d12d",
+    "street": "75 arbour",
+    "city": "Calgary",
+    "province": "Alberta",
+    "postalCode": "T3G4N3",
+    "description": "looking"
+  },
+  {
+    "id": "a30d6fc18687a3a4e3201932d7e7a72a82f30712",
+    "street": "56",
+    "city": "Calgary",
+    "province": "Alberta",
+    "postalCode": "T3G4N3",
+    "description": "ddddd",
+    "status": "applied"
+  },
+  {
+    "id": "32dddcba88b7dfc995983de948351ca3c06e4044",
+    "street": "56",
+    "city": "Calgary",
+    "province": "Alberta",
+    "postalCode": "T3G4N3",
+    "time": "april 6th",
+    "description": "ddddd",
+    "status": "applied"
+  },
+  {
+    "id": "2f44dad054c7ebdaf5a0ba4e2008dade4795640a",
+    "street": "ddddd",
+    "city": "dddd",
+    "province": "Alberta",
+    "postalCode": "T3G4N3",
+    "time": "ddddd",
+    "description": "shera",
+    "applicantId": "174ec026e8a578b5da55e41ef1b326c2d395d593",
+    "status": "applied"
+  }
+]
