@@ -13,6 +13,8 @@ import Home from './pages/Home';
 import {Container} from 'react-bootstrap';
 import PostAJob from './pages/PostAJob';
 import CurrentJobs from './pages/CurrentJobs';
+import MyJobs from './pages/MyJobs';
+import Profile from './pages/Profile';
 
 
 
@@ -30,10 +32,10 @@ function App() {
       <Route path = '/CreateAccount'  component = {CreateAccount} />
       <Route path = '/LogIn'  component = {() => <LogIn onLogin={() => setLoggedIn(true)} />} />
       <Route path = '/PostAJob'  component = {PostAJob} />
-      <Route path = '/CurrentJobs'  component = {() => <CurrentJobs loggedIn={loggedIn}  />} />
+      <Route path = '/MyJobs'  component = {() => <MyJobs loggedIn={loggedIn}  />} />
 
-      
-      
+      <Route path = '/CurrentJobs'  component = {() => <CurrentJobs loggedIn={loggedIn}  />} />
+      <Route path = '/profiles/:profileId'  component = { Profile } />      
         
       </Switch>
     

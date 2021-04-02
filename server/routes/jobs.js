@@ -17,6 +17,11 @@ function writeJobs(jobs) {
 
 const getRandomId = () => crypto.randomBytes(20).toString('hex');
 router.post('/', (req, res) => {
+    const token = req.body.token;
+    const profileId = getProfileId(token);
+    if(!profileId){
+        res.status(400).json('Invalid Token');
+    }
 
     const job = {
         id: getRandomId(),
@@ -25,7 +30,8 @@ router.post('/', (req, res) => {
         province: req.body.province,
         postalCode: req.body.postalCode,
         time: req.body.time,
-        description: req.body.description
+        description: req.body.description,
+        postedBy: profileId
     }
 
     const jobs = readJobs();
@@ -37,6 +43,19 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
     res.json(readJobs().reverse());
 })
+
+router.get('/my', (req, res) => {
+    const token = req.query.token;
+    const profileId = getProfileId(token);
+    if(!profileId){
+        res.status(400).json("Invalid Token");
+    }
+    const jobs = readJobs().reverse();
+    const myJobs = jobs.filter(job=>job.postedBy === profileId);
+
+    res.json(myJobs);
+})
+
 
 router.post('/apply', (req, res) => {
     const jobId = req.body.jobId;
@@ -55,6 +74,25 @@ router.post('/apply', (req, res) => {
     writeJobs(jobs);
 
     res.json('');
+})
+
+router.post('/confirm', (req, res) => {
+    const jobId = req.body.jobId;
+    const token = req.body.token;
+
+    const profileId = getProfileId(token);
+
+    const jobs = readJobs();
+    const foundJob = jobs.find(job=>job.id ===jobId);
+    if(foundJob.postedBy === profileId){
+        foundJob.status = "confirmed";
+        writeJobs(jobs);
+        res.json('');
+    }
+    else{
+        res.status(400).json('User not allowed');
+    }
+
 })
 
 module.exports = router;

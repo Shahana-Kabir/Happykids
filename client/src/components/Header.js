@@ -10,7 +10,7 @@ const Header = (props) => {
     
         return (
             <Navbar className = "justify-content-between bg-warning mb-4">
-              <Navbar.Brand href="/" className="text-primary">Happy Kids</Navbar.Brand>
+              <Navbar.Brand href="/" className="text-primary">HappyKids</Navbar.Brand>
               <Nav variant="pills" defaultActiveKey="/">
               { props.loggedIn ?
                 (
@@ -24,7 +24,7 @@ const Header = (props) => {
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link>
-                        <Link to="/CurrentJobs">
+                        <Link to="/MyJobs">
                             My Jobs
                         </Link>                        
                     </Nav.Link>                                       

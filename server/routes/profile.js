@@ -40,6 +40,18 @@ router.post('/', (req, res) => {
     res.json(profile);
 });
 
+router.get('/:profileId', (req, res) => {
+    const profileId = req.params.profileId;
+    const profiles = readProfiles();
+    const profile = profiles.find(p => p.id === profileId );
+    const data = {
+        name: profile.name, 
+        email: profile.email, 
+        bio: profile.bio
+    }; 
+    res.json(data);   
+})
+
 
 router.post('/login', (req, res) => {
     const email = req.body.email;
