@@ -44,6 +44,11 @@ router.get('/', (req, res) => {
     res.json(readJobs().reverse());
 })
 
+router.get('/recent', (req, res) => {
+    res.json(readJobs().reverse().slice(0, 4));
+})
+
+
 router.get('/my', (req, res) => {
     const token = req.query.token;
     const profileId = getProfileId(token);
@@ -86,6 +91,26 @@ router.post('/confirm', (req, res) => {
     const foundJob = jobs.find(job=>job.id ===jobId);
     if(foundJob.postedBy === profileId){
         foundJob.status = "confirmed";
+        writeJobs(jobs);
+        res.json('');
+    }
+    else{
+        res.status(400).json('User not allowed');
+    }
+
+})
+
+router.post('/reject', (req, res) => {
+    const jobId = req.body.jobId;
+    const token = req.body.token;
+
+    const profileId = getProfileId(token);
+
+    const jobs = readJobs();
+    const foundJob = jobs.find(job=>job.id ===jobId);
+    if(foundJob.postedBy === profileId){
+        delete foundJob.status;
+        delete foundJob.applicantId;
         writeJobs(jobs);
         res.json('');
     }

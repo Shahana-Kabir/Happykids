@@ -1,5 +1,5 @@
 
-import { Container, Button, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import axios from 'axios';
 import JobCard from '../components/JobCard';
@@ -8,11 +8,17 @@ import { useEffect, useState } from 'react';
 const CurrentJobs = (props) => {
 
   const [jobs, setJobs] = useState([]);
+  const [jobsLoaded, setJobsLoaded] = useState(false);
 
   useEffect(async () => {
-    const response = await axios.get('http://localhost:8080/jobs/');
-    setJobs(response.data);
+    if(!jobsLoaded){
+      const response = await axios.get('http://localhost:8080/jobs/');
+      setJobs(response.data);
+      setJobsLoaded(true);
+    }
+  
   });
+
 
   return (
     <Container>
@@ -28,7 +34,7 @@ const CurrentJobs = (props) => {
       
       <Row>
 
-        {jobs.map(job => <Col className="mb-4" md="6" lg="3"> <JobCard {...job} loggedIn={props.loggedIn} /> </Col>)}
+        {jobs.map(job => <Col className="mb-4" xs="12"> <JobCard onChange={() => setJobsLoaded(false)} {...job} loggedIn={props.loggedIn} /> </Col>)}
 
       </Row>
     </Container>

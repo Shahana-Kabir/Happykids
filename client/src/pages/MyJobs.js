@@ -18,6 +18,10 @@ const MyJobs = (props) => {
       }    
   });
 
+  const reload = ()=>{
+    setJobsLoaded(false);
+  }
+
   return (
     <Container>
 
@@ -32,7 +36,7 @@ const MyJobs = (props) => {
       
       <Row>
 
-        {jobs.map(job => <Col className="mb-4" md="6" lg="3"> <JobCard {...job} showingMine={true} loggedIn={props.loggedIn} /> </Col>)}
+        {jobs.map(job => <Col className="mb-4" sm="12"> <JobCard onChange={reload} {...job} showingMine={true} loggedIn={props.loggedIn} /> </Col>)}
 
       </Row>
     </Container>

@@ -61,7 +61,7 @@ router.post('/login', (req, res) => {
 
     if(profile){
         const newToken = createToken(profile.id);
-        res.json({token: newToken});
+        res.json({token: newToken, profileId: profile.id});
     }
     else{
         res.status(404).json()

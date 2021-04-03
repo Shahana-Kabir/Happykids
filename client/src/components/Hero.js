@@ -1,9 +1,11 @@
-import image from '../assets/images/sib.jpg';
 import './hero.scss';
 import { Jumbotron } from 'react-bootstrap';
 import {Link } from 'react-router-dom';
 
-const Hero = () => {
+const Hero = (props) => {
+
+    const startAt = props.loggedIn ? '/PostAJob' : '/CurrentJobs';
+
     return (
         //<img className = "hero" src= {image} alt = "hero image"/>
         <Jumbotron className="hero mt-4 text-white">
@@ -12,7 +14,7 @@ const Hero = () => {
                 Find friendly babysitters for your kids.
             </p>
             <p>
-                <Link className="btn btn-primary" to='/PostAJob'>Start Here</Link>
+                <Link className="btn btn-primary" to={startAt}>Start Here</Link>
             </p>
         </Jumbotron>
     );

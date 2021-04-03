@@ -1,19 +1,24 @@
-import { Component } from 'react';
-import './footer.scss';
+const { Container, Row, Col } = require("react-bootstrap")
+
+
 
 
 const Footer = () => {
-    return ( <footer className = "footer mt-4">
-           <a className = "footer__left">
-               About
-           </a>
-           <a className = "footer__right">
-               Contact Us
-           </a>
-           
+    return (<footer className="mt-4 bg-warning pt-4 pb-4">
+        <Container>
+            <Row>
+                <Col>
+                    About Us
+                </Col>
+
+                <Col className = "text-right">
+                    Contact Us
+                </Col>
+            </Row>
+        </Container>
 
 
-        </footer> );
+    </footer>);
 }
- 
+
 export default Footer;

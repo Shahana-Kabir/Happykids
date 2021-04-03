@@ -27,6 +27,7 @@ const LogIn = (props) => {
         try{
             const response = await axios.post('http://localhost:8080/profiles/login', profile);
             sessionStorage.setItem('token', response.data.token);
+            sessionStorage.setItem('profileId', response.data.profileId);
     
             setPosted(true);
             props.onLogin();

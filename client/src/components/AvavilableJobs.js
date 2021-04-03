@@ -1,24 +1,44 @@
-import { Component } from 'react';
-import './AvailableJobs.scss';
-class AvailableJobs extends Component {
-    render(){
-        return ( <div>
-            <div className = "availableJobs">
-            <div className = "availableJobs__right">
-            <h2 className = "availableJobs__right__title">AvailableJobs</h2>
-            <p className = "availableJobs__right__title">Job 1</p>
-            <p className = "availableJobs__right__title">Job 2</p>
-            </div>
-            <div className = "availableJobs__left">
-            
-            <p className = "availableJobs__left__title">Job 3</p>
-            <p className = "availableJobs__left__title">Job 4</p>
-            </div>
-            </div>
-           </div> );
 
-    }
-   
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import './AvailableJobs.scss';
+
+
+const AvailableJobs = () => {
+    const [jobs, setJobs] = useState([]);
+    const [loaded, setLoaded] = useState(false);
+
+
+    useEffect(async () => {
+        if (!loaded) {
+
+            const response = await axios.get('http://localhost:8080/jobs/recent');
+            setJobs(response.data);
+            setLoaded(true);
+
+        }
+
+    })
+
+
+    return (<div>
+        <h2>Recent Jobs</h2>
+        <Container>
+            <Row>
+                {jobs.map(job => {
+                    return (<Col md = "6" className="p-4 mb-4">                        
+                        <div><i class="bi-calendar-check mr-2"></i> { job.time }</div>
+                        <div><i class="bi-map-fill mr-2"></i> {job.street}</div>
+                    </Col>)
+                })}
+
+            </Row>
+        </Container>
+
+    </div>);
+
+
 }
- 
+
 export default AvailableJobs;

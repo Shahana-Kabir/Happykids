@@ -21,13 +21,14 @@ import Profile from './pages/Profile';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
+
   return (<Container>
 
     <BrowserRouter>
     
     <Header loggedIn={loggedIn} onLogout={() => setLoggedIn(false)} />
     <Switch>
-      <Route path = '/' exact component = {Home} />
+      <Route path = '/' exact component = {() => <Home loggedIn={loggedIn} />} />
         
       <Route path = '/CreateAccount'  component = {CreateAccount} />
       <Route path = '/LogIn'  component = {() => <LogIn onLogin={() => setLoggedIn(true)} />} />

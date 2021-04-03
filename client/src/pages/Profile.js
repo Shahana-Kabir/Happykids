@@ -19,12 +19,10 @@ const Profile = (props) => {
 
 
     return ( <>
-    <Card>
+    <Card className="mt-4">
             <Card.Body>
-                <Card.Title>{profile.name}</Card.Title>
-                <Card.Text>
-                    Email
-                </Card.Text>
+                <Card.Title>{props.title}</Card.Title>
+                <Card.Text>{profile.name}</Card.Text>
                 <Card.Text>
                     {profile.email}
                 </Card.Text>
