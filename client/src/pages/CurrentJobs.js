@@ -34,7 +34,7 @@ const CurrentJobs = (props) => {
       
       <Row>
 
-        {jobs.map(job => <Col className="mb-4" xs="12"> <JobCard onChange={() => setJobsLoaded(false)} {...job} loggedIn={props.loggedIn} /> </Col>)}
+        {jobs.map(job => <Col key = {job.id} className="mb-4" xs="12"> <JobCard onChange={() => setJobsLoaded(false)} {...job} loggedIn={props.loggedIn} /> </Col>)}
 
       </Row>
     </Container>

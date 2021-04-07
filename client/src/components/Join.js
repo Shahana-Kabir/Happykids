@@ -6,20 +6,20 @@ class Join extends Component {
     render() {
         return (
             <>
-                <Nav.Item>
-                    <Nav.Link>
+                <Nav.Item className = "ml-2">
+                   
                         <Link to="/CreateAccount">
                             Create Account
                         </Link>                        
-                    </Nav.Link>
+                   
                 </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link>
+                <Nav.Item className = "ml-2">
+                   
                     <Link to="/LogIn">
                             Log In
                         </Link>  
                         
-                        </Nav.Link>
+                       
                 </Nav.Item>
 
             </>

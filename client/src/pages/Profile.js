@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
+import './profile.scss';
 
 const Profile = (props) => {
     const profileId = props.profileId;
@@ -8,33 +9,33 @@ const Profile = (props) => {
     const [profile, setProfile] = useState({});
     const [profileLoaded, setProfileLoaded] = useState(false);
 
-    useEffect(async() => {
+    useEffect(async () => {
 
-        if(!profileLoaded){
+        if (!profileLoaded) {
             const response = await axios.get("http://localhost:8080/profiles/" + profileId)
             setProfile(response.data);
             setProfileLoaded(true);
-        }        
+        }
     })
 
 
-    return ( <>
-    <Card className="mt-4">
+    return (<>
+        <Card className="mt-4">
+            <Card.Img variant="top" className="profile__image mt-4" src={profile.imagePath} />
             <Card.Body>
-                <Card.Title>{props.title}</Card.Title>
-                <Card.Text>{profile.name}</Card.Text>
+
                 <Card.Text>
-                    {profile.email}
+                    <strong>{props.title}:</strong> {profile.name}
                 </Card.Text>
                 <Card.Text>
-                    Bio
+                    <strong>Email:</strong> {profile.email}
                 </Card.Text>
                 <Card.Text>
-                    {profile.bio}
+                    <strong>Biography:</strong> {profile.bio}
                 </Card.Text>
             </Card.Body>
         </Card>
-    </>  );
+    </>);
 }
- 
+
 export default Profile;

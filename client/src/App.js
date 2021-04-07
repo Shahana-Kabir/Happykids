@@ -20,18 +20,29 @@ import Profile from './pages/Profile';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userName, setUserName] = useState(null);
+
+  const onLogIn = ()=> {
+    setUserName(sessionStorage.getItem('name'));
+    setLoggedIn(true);
+  }
+
+  const onLogout = ()=> {
+    setUserName(null);
+    setLoggedIn(false);
+  }
 
 
   return (<Container>
 
     <BrowserRouter>
     
-    <Header loggedIn={loggedIn} onLogout={() => setLoggedIn(false)} />
+    <Header loggedIn={loggedIn} userName = {userName} onLogout={onLogout} />
     <Switch>
       <Route path = '/' exact component = {() => <Home loggedIn={loggedIn} />} />
         
       <Route path = '/CreateAccount'  component = {CreateAccount} />
-      <Route path = '/LogIn'  component = {() => <LogIn onLogin={() => setLoggedIn(true)} />} />
+      <Route path = '/LogIn'  component = {() => <LogIn onLogin={onLogIn} />} />
       <Route path = '/PostAJob'  component = {PostAJob} />
       <Route path = '/MyJobs'  component = {() => <MyJobs loggedIn={loggedIn}  />} />
 

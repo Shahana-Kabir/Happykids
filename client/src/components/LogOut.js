@@ -11,12 +11,12 @@ const LogOut = (props) => {
     }
     return (
 
-        <Nav.Item>
-            <Nav.Link>
+        <Nav.Item className = "ml-2">
+            
                 <Link onClick={onClick}>
                     Logout
                         </Link>
-            </Nav.Link>
+           
         </Nav.Item>
     );
 }

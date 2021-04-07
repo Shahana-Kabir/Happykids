@@ -8,10 +8,10 @@ const Hero = (props) => {
 
     return (
         //<img className = "hero" src= {image} alt = "hero image"/>
-        <Jumbotron className="hero mt-4 text-white">
+        <Jumbotron className="rounded-0 hero text-white d-flex flex-column justify-content-center">
             <h1>It takes a village to raise a kid...</h1>
             <p>
-                Find friendly babysitters for your kids.
+                Find friendly & trusted babysitters for your kids.
             </p>
             <p>
                 <Link className="btn btn-primary" to={startAt}>Start Here</Link>

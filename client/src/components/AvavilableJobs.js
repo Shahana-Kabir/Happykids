@@ -27,7 +27,7 @@ const AvailableJobs = () => {
         <Container>
             <Row>
                 {jobs.map(job => {
-                    return (<Col md = "6" className="p-4 mb-4">                        
+                    return (<Col key={job.id} md = "6" className="p-2 mb-2">                        
                         <div><i class="bi-calendar-check mr-2"></i> { job.time }</div>
                         <div><i class="bi-map-fill mr-2"></i> {job.street}</div>
                     </Col>)

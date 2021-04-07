@@ -13,29 +13,44 @@ const CreateAccount = () => {
     const [posted, setPosted] = useState(false);
     const [validated, setValidated] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
+    const [image, setImage] = useState(null);
+
 
 
     const submit = async (e) => {
         e.preventDefault();
 
         const form = e.currentTarget;
-        if(!form.checkValidity()){            
+        if (!form.checkValidity()) {
             setValidated(true);
             return;
         }
 
-        if(password !== confirmPassword){
+        if (password !== confirmPassword) {
             setPasswordError(true);
             return;
         }
         else {
             setPasswordError(false);
         }
-        
-        const profile = {
-            name, email, password, confirmPassword, bio
-        }
-        const response = await axios.post('http://localhost:8080/profiles/', profile);
+
+       
+
+        var formData = new FormData();
+        formData.append("image", image);
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("password", password);
+        formData.append("bio", bio);
+
+        const response = await axios.post('http://localhost:8080/profiles/', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+
+
+       // const response = await axios.post('http://localhost:8080/profiles/', profile);
 
         console.log('From server');
         console.log(response.data);
@@ -91,11 +106,11 @@ const CreateAccount = () => {
                             <Form.Label>Confirm Password</Form.Label>
                             <Form.Control type="password" required placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)} />
                             <Form.Control.Feedback type="invalid">
-                               Confirm password is required.
+                                Confirm password is required.
                             </Form.Control.Feedback>
-                            { passwordError ? 
-                            <Form.Text className="text-danger">Password and Confirm Password must match</Form.Text>
-                            : ''}
+                            {passwordError ?
+                                <Form.Text className="text-danger">Password and Confirm Password must match</Form.Text>
+                                : ''}
                         </Form.Group>
 
 
@@ -103,7 +118,7 @@ const CreateAccount = () => {
 
                     <Col>
                         <Form.Group>
-                            <Form.File label="Profile Image" />
+                            <Form.File label="Profile Image" required onChange={(e) => setImage(e.target.files[0])} />
                         </Form.Group>
 
                         <Form.Group>

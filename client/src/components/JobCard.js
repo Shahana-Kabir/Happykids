@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import { Button, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Profile from '../pages/Profile';
 
 
@@ -43,14 +44,14 @@ const JobCard = (props) => {
         button = '';
     }
     else {
-        button = props.loggedIn ? <Button onClick={apply}>Apply</Button> : "Login to Apply";
+        button = props.loggedIn ? <Button onClick={apply}>Apply</Button> : <Link to = '/LogIn'>Log In to Apply</Link>;
     }
 
     let confirmButton = '';
     if (isPostedByMe) {
         confirmButton = <>
             <Button onClick={confirm} className = "mr-4">Confirm</Button>
-            <Button variant= "secondary" onClick={reject}>Reject</Button>
+            <Button variant= "secondary" onClick={reject}>Decline</Button>
         </>
     }
 

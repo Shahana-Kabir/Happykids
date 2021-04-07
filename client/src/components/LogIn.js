@@ -28,6 +28,7 @@ const LogIn = (props) => {
             const response = await axios.post('http://localhost:8080/profiles/login', profile);
             sessionStorage.setItem('token', response.data.token);
             sessionStorage.setItem('profileId', response.data.profileId);
+            sessionStorage.setItem('name', response.data.name);
     
             setPosted(true);
             props.onLogin();
@@ -91,7 +92,7 @@ const LogIn = (props) => {
 
                     <Col className="d-flex justify-content-center">
                         <Button variant="primary" type="submit">
-                            Submit
+                            Log In
                            </Button>
                     </Col>
 

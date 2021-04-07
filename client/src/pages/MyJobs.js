@@ -28,7 +28,7 @@ const MyJobs = (props) => {
       <Row>
         <Col>
           <h1>
-            Jobs Posted by Me
+            My Jobs
           </h1>
         </Col>
 
