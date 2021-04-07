@@ -45,7 +45,9 @@ router.get('/', (req, res) => {
 })
 
 router.get('/recent', (req, res) => {
-    res.json(readJobs().reverse().slice(0, 4));
+    const jobs = readJobs().reverse().filter(j => j.status !== 'confirmed');
+    
+    res.json(jobs.slice(0, 4));
 })
 
 
@@ -54,9 +56,10 @@ router.get('/my', (req, res) => {
     const profileId = getProfileId(token);
     if(!profileId){
         res.status(400).json("Invalid Token");
+        return;
     }
     const jobs = readJobs().reverse();
-    const myJobs = jobs.filter(job=>job.postedBy === profileId);
+    const myJobs = jobs.filter(job=>job.postedBy === profileId || job.applicantId === profileId);
 
     res.json(myJobs);
 })

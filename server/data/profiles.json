@@ -1,18 +1,50 @@
 [
   {
-    "id": "ea2ac2a23de8c594adecb080c53a59d86638ce3e",
-    "name": "Jocelyn Payne",
-    "email": "jc@gmail.com",
-    "password": "abcd",
-    "confirmPassword": "abcd",
-    "bio": "Want a job"
+    "id": "410e7b315b61403d25a5a361827de70e097c8c18",
+    "name": "Daddy Tomy",
+    "email": "dt@gmail.com",
+    "password": "12345",
+    "bio": "Hi, I am Tomy. I have two wonderful energetic kids. One is 8 years old boy and another one is 5 years old girl.",
+    "imagePath": "http://localhost:8080/images/410e7b315b61403d25a5a361827de70e097c8c18-hisu-lee-in9QlspOG6w-unsplash.jpg"
   },
   {
-    "id": "3aca2182ebd64929084a699d71c6faa661a9a9e3",
-    "name": "Kirsten Kelly",
-    "email": "kk@gmail.com",
+    "id": "989d209b006d260e1c773de52ce186eb38a51634",
+    "name": "Nanny Ishika",
+    "email": "ni@gmail.com",
     "password": "12345",
-    "confirmPassword": "12345",
-    "bio": "I am a wonderful babysitter"
+    "bio": "Hi I am an energetic and experienced nanny. I have more than 5 years of experience to work as a baby sitter, early childhood educator and also as a pre-school teacher.",
+    "imagePath": "http://localhost:8080/images/989d209b006d260e1c773de52ce186eb38a51634-seater4.jpg"
+  },
+  {
+    "id": "b32e74f9ac4663e1e3c000c11498a2dbc6efb838",
+    "name": "Mommy Liana",
+    "email": "ml@gmail.com",
+    "password": "12345",
+    "bio": "Hi I am a mom of two wonderful kids. They are 5 years old boy and 3 years old girl. They are quiet outdoor people and love to explore nature.",
+    "imagePath": "http://localhost:8080/images/b32e74f9ac4663e1e3c000c11498a2dbc6efb838-annie-spratt-ZQTylWGscQw-unsplash.jpg"
+  },
+  {
+    "id": "56e645d34b79ad9e45025500fd147f68225b0323",
+    "name": "Nanny Hannah",
+    "email": "nh@gmail.com",
+    "password": "12345",
+    "bio": "Hi, I am nanny Hannah. I have more than 10 years experience to work for early childhood development, baby sitting and also as a pre-school teacher.",
+    "imagePath": "http://localhost:8080/images/56e645d34b79ad9e45025500fd147f68225b0323-priscilla-du-preez-Xgd7_-qdC2k-unsplash.jpg"
+  },
+  {
+    "id": "a3fa4ba561ae1d33eab9ef23037cb130fd5b096f",
+    "name": "Nanny Pricila",
+    "email": "np@gmail.com",
+    "password": "12345",
+    "bio": "Hi, I am nanny Pricila, a fun loving, and nature explorer I call myself. I have more than 12 years experience in baby sitting and early childhood education. ",
+    "imagePath": "http://localhost:8080/images/a3fa4ba561ae1d33eab9ef23037cb130fd5b096f-hannah-busing-_jhR5juE-aE-unsplash.jpg"
+  },
+  {
+    "id": "df92f8eb70c78b2f59a32a652c47a7dccea60630",
+    "name": "Mommy Staphenie",
+    "email": "ms@gmail.com",
+    "password": "12345",
+    "bio": "Hi I am Staphenie. I have 3 wonderful kids. 8 years old boy, 5 years old twin girls.",
+    "imagePath": "http://localhost:8080/images/df92f8eb70c78b2f59a32a652c47a7dccea60630-jake-ingle-alROYtC8fDw-unsplash.jpg"
   }
 ]

@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const getRandomId = () => crypto.randomBytes(20).toString('hex');
 
+console.log("RESETTING TOKEN");
 const tokens = {};
 
 const createToken = (profileId) =>{
